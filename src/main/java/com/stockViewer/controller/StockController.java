@@ -22,7 +22,8 @@ public class StockController {
     }
 	
     @RequestMapping(value = "/stock", method = RequestMethod.GET)
-    public String getStockInfo(Model model, @RequestParam(value = "code", required = false) String code) throws Exception {
+    public String getStockInfo(Model model, 
+    		@RequestParam(value = "code", required = false) String code) throws Exception {
     	if (code != null) {
     		if (code.length() > 0) {
     			code = code.toUpperCase();

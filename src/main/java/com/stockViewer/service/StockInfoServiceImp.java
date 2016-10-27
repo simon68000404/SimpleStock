@@ -22,8 +22,12 @@ import com.stockViewer.model.db.StockInfo;
 @Service("StockInfoService")
 public class StockInfoServiceImp implements StockInfoService {
 	private static final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-	private static final String YAHOO_WEBSERVICE = "http://finance.yahoo.com/webservice/v1/symbols/$SYMBOLS/quote?format=json";
-	private static final List<String> userAgents = Arrays.asList("", "");
+	private static final String YAHOO_WEBSERVICE = 
+			"http://finance.yahoo.com/webservice/v1/symbols/$SYMBOLS/quote?format=json";
+	private static final String[] userAgents = {"Mozilla/5.0 (Linux; Android 6.0.1; MotoG3 Build/MPI24.107-55)", 
+			"AppleWebKit/537.36 (KHTML, like Gecko)", 
+			"Chrome/51.0.2704.81", 
+			"Safari/537.36"};
 
 	@Override
 	public List<StockInfo> findAllStockInfos() {
@@ -69,12 +73,11 @@ public class StockInfoServiceImp implements StockInfoService {
 		HttpURLConnection connection = null;
 		
 		String targetURL = YAHOO_WEBSERVICE.replace("$SYMBOLS", stockCode);
-		
 		try {
 			URL url = new URL(targetURL);
 		    connection = (HttpURLConnection) url.openConnection();
 		    connection.setRequestMethod("GET");
-		    connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android 6.0.1; MotoG3 Build/MPI24.107-55) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36");  
+		    connection.setRequestProperty("User-Agent", String.join(" ", userAgents));  
 	
 		    connection.setUseCaches(false);
 		    connection.setDoOutput(true);
@@ -82,7 +85,7 @@ public class StockInfoServiceImp implements StockInfoService {
 		    // Get Response  
 		    InputStream is = connection.getInputStream();
 		    BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-		    StringBuffer response = new StringBuffer();
+		    StringBuilder response = new StringBuilder();
 		    String line;
 		    while ((line = rd.readLine()) != null) {
 		      response.append(line);
@@ -91,7 +94,8 @@ public class StockInfoServiceImp implements StockInfoService {
 		    
 		    // read from json to model object
 		    ObjectMapper mapper = new ObjectMapper();
-		    com.stockViewer.model.StockInfo infoStock = mapper.readValue(response.toString(), com.stockViewer.model.StockInfo.class);
+		    com.stockViewer.model.StockInfo infoStock = mapper.readValue(response.toString(), 
+		    		com.stockViewer.model.StockInfo.class);
 		    if (infoStock.list.resources.length > 0) {
 		    	return infoStock;
 		    }

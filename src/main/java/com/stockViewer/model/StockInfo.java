@@ -27,7 +27,8 @@ public final class StockInfo {
             public final long count;
     
             @JsonCreator
-            public Meta(@JsonProperty("type") String type, @JsonProperty("start") long start, @JsonProperty("count") long count){
+            public Meta(@JsonProperty("type") String type, @JsonProperty("start") long start, 
+            		@JsonProperty("count") long count){
                 this.type = type;
                 this.start = start;
                 this.count = count;
@@ -47,7 +48,8 @@ public final class StockInfo {
                 public final Fields fields;
         
                 @JsonCreator
-                public ResourceInner(@JsonProperty("classname") String classname, @JsonProperty("fields") Fields fields){
+                public ResourceInner(@JsonProperty("classname") String classname, 
+                		@JsonProperty("fields") Fields fields){
                     this.classname = classname;
                     this.fields = fields;
                 }
@@ -62,7 +64,10 @@ public final class StockInfo {
                     public final String volume;
             
                     @JsonCreator
-                    public Fields(@JsonProperty("name") String name, @JsonProperty("price") String price, @JsonProperty("symbol") String symbol, @JsonProperty("ts") String ts, @JsonProperty("type") String type, @JsonProperty("utctime") String utctime, @JsonProperty("volume") String volume){
+                    public Fields(@JsonProperty("name") String name, @JsonProperty("price") String price, 
+                    		@JsonProperty("symbol") String symbol, @JsonProperty("ts") String ts, 
+                    		@JsonProperty("type") String type, @JsonProperty("utctime") String utctime, 
+                    		@JsonProperty("volume") String volume){
                         this.name = name;
                         this.price = price;
                         this.symbol = symbol;
