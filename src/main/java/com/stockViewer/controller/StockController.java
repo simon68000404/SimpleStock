@@ -18,7 +18,7 @@ public class StockController {
 	
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home() {
-    	return "update_stock";
+    	return "redirect:/stock/update";
     }
 	
     @RequestMapping(value = "/stock", method = RequestMethod.GET)
