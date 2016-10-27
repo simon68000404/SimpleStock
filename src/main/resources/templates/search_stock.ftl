@@ -10,7 +10,7 @@
 			<#include "header.ftl">
 			<h1>Search a stock</h1>
 			<div class="c-form-container search">
-				<form class="p-form" method="get" action="#">
+				<form class="p-form" method="get" action="/stock">
 					<label class="p-form__label" for="code">Stock code: </label>
 					<input class="p-form__input--text-field" type="text" placeholder="    i.e. A2M.AX" name="code" id="code">
 					<input class="p-form__input--submit js-submit" type="submit" value="Search">

@@ -10,7 +10,7 @@
 			<#include "header.ftl">
 			<h1>Add or update a stock</h1>
 			<div class="c-form-container search">
-				<form class="p-form" method="post" action="#">
+				<form class="p-form" method="post" action="/stock/update">
 					<label class="p-form__label" for="code">Stock code: </label>
 					<input class="p-form__input--text-field" type="text" placeholder="    i.e. A2M.AX" name="code" id="code">
 					<input class="p-form__input--submit js-submit" type="submit" value="Add/Update">
