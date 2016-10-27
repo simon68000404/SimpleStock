@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -21,7 +22,8 @@ import com.stockViewer.model.db.StockInfo;
 @Service("StockInfoService")
 public class StockInfoServiceImp implements StockInfoService {
 	private static final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-	final String yahooWebService = "http://finance.yahoo.com/webservice/v1/symbols/$SYMBOLS/quote?format=json";
+	private static final String YAHOO_WEBSERVICE = "http://finance.yahoo.com/webservice/v1/symbols/$SYMBOLS/quote?format=json";
+	private static final List<String> userAgents = Arrays.asList("", "");
 
 	@Override
 	public List<StockInfo> findAllStockInfos() {
@@ -66,7 +68,7 @@ public class StockInfoServiceImp implements StockInfoService {
 	private com.stockViewer.model.StockInfo fetchLatestStockInfo(String stockCode) {
 		HttpURLConnection connection = null;
 		
-		String targetURL = yahooWebService.replace("$SYMBOLS", stockCode);
+		String targetURL = YAHOO_WEBSERVICE.replace("$SYMBOLS", stockCode);
 		
 		try {
 			URL url = new URL(targetURL);
@@ -80,11 +82,10 @@ public class StockInfoServiceImp implements StockInfoService {
 		    // Get Response  
 		    InputStream is = connection.getInputStream();
 		    BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-		    StringBuffer response = new StringBuffer(); // or StringBuffer if Java version 5+
+		    StringBuffer response = new StringBuffer();
 		    String line;
 		    while ((line = rd.readLine()) != null) {
 		      response.append(line);
-		      response.append('\r');
 		    }
 		    rd.close();
 		    

@@ -16,6 +16,11 @@ public class StockController {
 	@Autowired
 	StockInfoService stockInfoService;
 	
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home() {
+    	return "update_stock";
+    }
+	
     @RequestMapping(value = "/stock", method = RequestMethod.GET)
     public String getStockInfo(Model model, @RequestParam(value = "code", required = false) String code) throws Exception {
     	if (code != null) {
