@@ -1,0 +1,166 @@
+$mq-medium: 768px;
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Proza Libre', sans-serif;
+    margin: 0;
+}
+
+.c-page-wrapper {
+	background-color: lightgrey;
+}
+
+.c-main-container {
+    margin: 0 auto;
+    max-width: 800px;
+    height: 100vh;
+    background-color: white;
+	text-align: center;
+	padding: 0 15px;
+}
+
+.o_main-nav__list {
+	list-style: none;
+	padding: 0;
+}
+
+.o_header__item {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+	
+	@media (min-width: $mq-medium) {
+		display: inline-block;
+		width: 49%;
+	}
+	
+	&:hover {
+		border: solid 3px pink;
+	}
+}
+
+.o_header__item.current {
+	border: solid 3px pink;
+}
+
+.o_header__link {
+    text-decoration: none;
+    width: 100%;
+    display: inline-block;
+    height: 50px;
+    color: #fff;
+    background-color: #6496c8;
+    text-shadow: -1px 1px #417cb8;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+	padding-top: 16px;
+}
+
+.o_header__link:hover {
+    background-color: #346392;
+    text-shadow: -1px 1px #27496d;
+}
+
+.o_header__link:active {
+    background-color: #27496d;
+    text-shadow: -1px 1px #193047;
+}
+
+.p-form.search {
+    text-align: center;
+}
+
+.c-form-container {
+    height: 100px;
+	text-align: center;
+	margin-bottom: 30px;
+	
+	@media (min-width: $mq-medium) {
+		height: 50px;
+	}
+}
+.p-form {
+    height: 100%;
+}
+
+.p-form__label {
+	height: 50%;
+	@media (min-width: $mq-medium) {
+		height: 100%;
+	}
+}
+
+.p-form__input--text-field {
+	height: 50%;
+	max-width: 300px;
+	border-color: cadetblue;
+    border-width: 3px;
+    border-radius: 23px;
+    border-style: solid;
+	background-color: whitesmoke;
+	
+	@media (min-width: $mq-medium) {
+		height: 100%;
+	}
+	
+	&:hover {
+		border-color: turquoise;
+		background-color: lightcyan;
+	}
+	&:focus {
+		border-color: turquoise;
+		background-color: lightcyan;
+	}
+}
+
+.p-form__input--submit {
+	height: 50%;
+	color: white;
+    background-color: cadetblue;
+    border: none;
+    padding: 0px 20px;
+    text-align: center;
+    font-family: 'Proza Libre', sans-serif;
+	display: block;
+	margin: 20px auto 0 auto;
+	width: 100%;
+	
+	&:hover {
+		background-color: turquoise;
+	}
+	&:focus {
+		background-color: turquoise;
+	}
+	&:active {
+		background-color: turquoise;
+	}
+	
+	@media (min-width: $mq-medium) {
+		height: 100%;
+	}
+	
+	@media (min-width: $mq-medium) {
+		display: initial;
+		width: auto;
+	}
+}
+
+.p-error-msg {
+	color: red;
+}
+
+.p-stock-info {
+	height: 50px;
+}
+
+.p-stock-info__list {
+    list-style: none;
+    text-align: left;
+    width: 330px;
+    margin: 0 auto;
+    padding: 0;
+}
+
