@@ -35,9 +35,7 @@ public class StockInfoServiceImp implements StockInfoService {
 		session.beginTransaction();
 		List result = session.createQuery( "from StockInfo" ).getResultList();
 		session.close();
-		
-		StockInfo result0 = ((List<StockInfo>)result).get(0);
-		
+				
 		return (List<StockInfo>) result;
 	}
 
