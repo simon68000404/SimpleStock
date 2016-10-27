@@ -1,7 +1,7 @@
 <#assign currentPage = "update">
 <html>
 <head>
-<title>Acmee Products International</title>
+<title>Add or update a stock</title>
 <#include "head.ftl">
 </head>
 <body>  

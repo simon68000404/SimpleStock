@@ -1,7 +1,7 @@
 <#assign currentPage = "search">
 <html>
 <head>
-<title>Acmee Products International</title>
+<title>Search a stock</title>
 <#include "head.ftl">
 </head>
 <body>
