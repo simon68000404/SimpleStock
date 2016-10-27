@@ -100,10 +100,8 @@ public final class StockInfo {
 	    try {
 			this.utctime = m_ISO8601Local.parse(stockInfoDTO.list.resources[0].resource.fields.utctime);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//	    this.utctime = stockInfoDTA.list.resources[0].resource.fields.utctime);
 	    this.volume = Integer.valueOf(stockInfoDTO.list.resources[0].resource.fields.volume);
 	}
 }
